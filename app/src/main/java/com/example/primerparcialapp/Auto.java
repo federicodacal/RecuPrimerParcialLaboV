@@ -1,6 +1,8 @@
 package com.example.primerparcialapp;
 
-public class Auto {
+import java.io.Serializable;
+
+public class Auto implements Serializable {
     private Integer id;
     private String make;
     private String model;

@@ -37,12 +37,19 @@ public class MainActivity extends AppCompatActivity {
         rv.setAdapter(adapterAuto);
 
         GridLayoutManager glm = new GridLayoutManager(this, 2);
-
         rv.setLayoutManager(glm);
     }
 
     @Override
     protected void onRestart() {
+        if(MainActivity.edit) {
+            int i = AutoActivity.bundle.getInt("pos");
+            this.autos.get(i).setMake(auto.getMake());
+            this.autos.get(i).setModel(auto.getModel());
+            this.autos.get(i).setYear(auto.getYear());
+            MainActivity.edit = false;
+            this.adapterAuto.notifyItemChanged(i);
+        }
         super.onRestart();
     }
 }

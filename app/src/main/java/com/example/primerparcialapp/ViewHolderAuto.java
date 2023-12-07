@@ -23,6 +23,15 @@ public class ViewHolderAuto extends RecyclerView.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View v) {
+        Intent i = new Intent(v.getContext(), AutoActivity.class);
 
+        if(super.getAbsoluteAdapterPosition() != RecyclerView.NO_POSITION) {
+            i.putExtra("auto", this.act.autos.get(super.getAbsoluteAdapterPosition()));
+            i.putExtra("pos", super.getAbsoluteAdapterPosition());
+
+            Log.d("Click", this.act.autos.get(super.getAbsoluteAdapterPosition()).toString());
+
+            v.getContext().startActivity(i);
+        }
     }
 }
